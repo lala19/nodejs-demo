@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <button type="button" class="prev" data-info="1">prev</button>
+    <button type="button" class="next" data-info="1">next</button>
+    <script src="jquery.js"></script>
+</body>
+
+</html>
+<script>
+    arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16];
+    console.log(arr)
+    var onePage = 3;//一页的数量
+    for (let i = 0; i < onePage; i++) {
+        console.log(arr[i])
+    }
+    $(".prev").on("click", function () {
+        var currNum = parseInt($(this).attr("data-info"));//当前的页数
+        var pageNum = parseInt(arr.length / onePage);//总页数
+        if (arr.length % pageNum > 0) {
+            pageNum++;
+        }
+        if (currNum >= 2) {
+            $(".prev").attr("data-info", (currNum - 1));
+            $(".next").attr("data-info", (currNum - 1));
+            for (var i = (currNum-2) * onePage; i < (currNum-2) * onePage+onePage; i++) {
+                if(arr[i]!=undefined){
+                    console.log(arr[i]);
+                }
+            }
+        }
+    })
+
+    $(".next").on("click", function () {
+        var currNum = parseInt($(this).attr("data-info"));//当前的页数
+        var pageNum = parseInt(arr.length / onePage);//总页数
+        if (arr.length % pageNum > 0) {
+            pageNum++;
+        }
+        if (currNum <= pageNum) {
+            $(".prev").attr("data-info", currNum + 1);
+            $(".next").attr("data-info", currNum + 1);
+            for (var i = currNum * onePage; i < (currNum * onePage+onePage); i++) {
+                if(arr[i]!=undefined){
+                    console.log(arr[i]);
+                }
+            }
+        }
+    })
+</script>
