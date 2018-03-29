@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="demo">
+        <input type="text" v-model="inputTxt">
+        <p v-html="txt">
+        </p>
+    </div>
+    <script src="js/vue.js"></script>
+    <script>
+        new Vue({
+            el: "#demo",
+            data: {
+                inputTxt: ""
+            },
+            computed: {
+                txt: function () {
+                    let str = `配置是否允许 vue-devtools 检查代码。开发版本默认为 true，生产版本默认为 false。生产版本设为 true 可以启用检查。`;
+                    let reg = new RegExp(this.inputTxt, "g");
+                    str = str.replace(reg, "<span style='color:red'>" + this.inputTxt + "</span>")
+                    return str;
+                }
+            }
+        })
+    </script>
+</body>
+</html>
