@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    {{name}}<br/>{{txt}}
+    <input type="text" oninput="change(this)"/>
+</div>
+<button onclick="tab()">变换</button>
+<script type="text/javascript">
+    var App = document.getElementById("app");
+    var html = App.innerHTML;
+    function Vue(obj){
+        var str=html
+        for (var key in obj) {
+            console.log(key);
+            if(str.indexOf("{{"+key+"}}")!=-1){
+                console.log(1);
+                var reg=new RegExp("{{"+key+"}}","g")
+                str=str.replace(reg,obj[key])
+            }
+        }
+        App.innerHTML=str
+    }
+    //字面量表达式定义对象默认enumerable、configurable、writable都为true
+    var name = "11", txt = "22";
+    var obj = {name, txt};
+    var obj2 = {};
+    for(var key of Object.keys(obj)){
+        console.log(key);
+        (function(key, value){
+            Object.defineProperty(obj2, key, {
+                enumerable : true,
+                configurable : true,
+                get : function(){
+                    console.log("获取了" + key + "的值");
+                    return value;
+                },
+                set : function(newValue){
+                    console.log("设置了" + key + "的值"+newValue);
+                    value = newValue;
+                    Vue(obj2)
+                }
+            });
+        })(key, obj[key])
+    }
+    Vue(obj2)
+    function tab(){
+        obj2.name=Math.random()
+    }
+    function change(self){
+        console.log(self.value);
+        obj2.name=self.value;
+    }
+</script>
+</body>
+</html>
