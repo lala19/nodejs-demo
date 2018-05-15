@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <form id="myform">
+        <input type="file" name="selfile" multiple>
+        <button type="button">上传</button>
+    </form>
+    <script src="../../JS&jQuery/jquery.js"></script>
+    <script>
+        $("button").on("click", function () {
+            $.ajax({
+                url: "http://localhost:9000/getimg",
+                type: "post",
+                cache: false,
+                data: new FormData($('#myform')[0]),
+                processData: false,
+                contentType: false,
+                success: function (data) {
+                    console.log(data);
+                }
+            })
+        })
+    </script>
+</body>
+
+</html>
