@@ -8,9 +8,56 @@
 </head>
 <body>
     <script>
+    var data=[  
+{id:1,pid:0,text:'A'},  
+{id:2,pid:4,text:"E[父C]"},  
+{id:3,pid:7,text:"G[父F]"},  
+{id:4,pid:1,text:"C[父A]"},  
+{id:5,pid:6,text:"D[父B]"},  
+{id:6,pid:0,text:'B'},  
+{id:7,pid:4,text:"F[父C]"}  
+];  
     
-    
-    
+    function toTreeData(data){  
+    var pos={};  
+    var tree=[];  
+    var i=0;  
+    while(data.length!=0){  
+        if(data[i].pid==0){  
+            tree.push({  
+                id:data[i].id,  
+                text:data[i].text,  
+                children:[]  
+            });  
+            pos[data[i].id]=[tree.length-1];      
+            data.splice(i,1);  
+            i--;  
+        }else{  
+            var posArr=pos[data[i].pid];  
+            if(posArr!=undefined){  
+                  
+                var obj=tree[posArr[0]];  
+                for(var j=1;j<posArr.length;j++){  
+                    obj=obj.children[posArr[j]];  
+                }  
+  
+                obj.children.push({  
+                    id:data[i].id,  
+                    text:data[i].text,  
+                    children:[]  
+                });  
+                pos[data[i].id]=posArr.concat([obj.children.length-1]);  
+                data.splice(i,1);  
+                i--;  
+            }  
+        }  
+        i++;  
+        if(i>data.length-1){  
+            i=0;  
+        }  
+    }  
+    return tree;  
+}  
     </script>
 </body>
 </html>
