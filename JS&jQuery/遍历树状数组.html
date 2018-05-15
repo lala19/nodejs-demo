@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<script>
+function getMenuName(menus, id) {
+    var name = "";
+    for (var i = 0; i < menus.length; i++) {
+        if (menus[i].id == id) {
+            name = menus[i].text;
+            break;
+        } else {
+            (function () {
+                var m = arguments[0];
+                var menuid = arguments[1];
+                for (var j = 0; j < m.length; j++) {
+                    if (m[j].id == menuid) {
+                        name = m[j].text;
+                        break;
+                    } else if (m[j].children != null && m[j].children.length > 0) {
+                        arguments.callee(m[j].children, val); //递归匿名方法
+                    }
+                }
+            })(menus[i].children, id);
+        }
+    }
+    return name;
+}
+var arr = [{
+    "id": 28,
+    "text": "公司信息",
+    "children": [{
+            "id": 1,
+            "text": "公司文化"
+        },
+        {
+            "id": 2,
+            "text": "招聘计划"
+        },
+        {
+            "id": 6,
+            "text": "公司新闻",
+            "children": [{
+                "id": 47,
+                "text": "行业新闻"
+            }]
+        },
+        {
+            "id": 11,
+            "text": "内部新闻",
+            "children": [{
+                    "id": 24,
+                    "text": "行政信息"
+                },
+                {
+                    "id": 27,
+                    "text": "高层指示"
+                }
+            ]
+        },
+        {
+            "id": 22,
+            "text": "联系我们"
+        },
+        {
+            "id": 26,
+            "text": "产品展示",
+            "children": [{
+                    "id": 32,
+                    "text": "电力产品"
+                },
+                {
+                    "id": 33,
+                    "text": "配件介绍"
+                }
+            ]
+        }
+    ]
+}]
+console.log(getMenuName(arr,28))
+
+</script>    
+</body>
+</html>

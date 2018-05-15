@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /**
+         * Author liuchuzhang
+         *
+         */
+
+        var aaa = [{
+            name: 'aaa',
+            id: 2,
+        }, {
+            name: 'a',
+            id: 1,
+        }, {
+            name: 'b',
+            id: 2,
+            pid: 1
+        }, {
+            name: 'c',
+            id: 3,
+            pid: 2
+        }, {
+            name: 'd',
+            id: 4,
+            pid: 2
+        }, {
+            name: 'e',
+            id: 5,
+            pid: 1
+        }];
+
+        function fn(data, pid) {
+            var result = [],
+                temp;
+            for (var i = 0; i < data.length; i++) {
+                if (data[i].pid == pid) {
+                    var obj = {
+                        "text": data[i].name,
+                        "id": data[i].id
+                    };
+                    temp = fn(data, data[i].id);
+                    if (temp.length > 0) {
+                        obj.children = temp;
+                    }
+                    result.push(obj);
+                }
+            }
+            return result;
+        }
+        console.log(fn(aaa))
+    </script>
+</body>
+
+</html>

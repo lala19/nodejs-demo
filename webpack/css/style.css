@@ -1,0 +1,152 @@
+ul li {
+    list-style: none;
+}
+
+html,
+body {
+    font-size: 0.12rem;
+}
+
+.header {
+    height: 0.44rem;
+    background: #d43d3d;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header .header_l {
+    padding-left: 0.25rem;
+}
+
+.header .header_c {
+    font-size: 0.20rem;
+    color: #fff;
+}
+
+.header .header_c img {
+    margin-left: 0.05rem;
+}
+
+.header .header_r {
+    padding-right: 0.25rem;
+}
+
+.tab {
+    height: 0.35rem;
+    background: #f4f5f6;
+}
+
+.tab {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+}
+
+.tab_add {
+    width: 0.4rem;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #f4f5f6;
+    position: absolute;
+    right: 0;
+}
+
+.tab_con {
+    width: 1000px;
+    display: flex;
+    overflow-x: scroll;
+    position: absolute;
+}
+
+.tab_con li {
+    width: 0.6rem;
+    text-align: center;
+    font-size: 0.16rem;
+}
+
+.tab_con li a {
+    color: #505050;
+    text-decoration: none;
+}
+
+.tab_con li:nth-child(1) {
+    color: #f76a6a;
+}
+
+.article {
+    border-bottom: 1px solid #f4f4f4;
+    padding: 0.14rem 0;
+    margin: 0 0.16rem;
+}
+
+.article:last-child {
+    border-bottom: 0;
+}
+
+h3 {
+    font-weight: normal;
+    font-size: .16rem;
+    line-height: 0.23rem;
+}
+
+.item_btm i {
+    font-style: normal;
+    font-size: 0.08rem;
+    float: left;
+    display: block;
+    color: #f76a6a;
+    border: solid #fddfdf 1px;
+    padding: 0 0.01rem;
+    margin-right: 0.05rem;
+}
+
+.clearfix::after {
+    content: ".";
+    clear: both;
+    display: block;
+    overflow: hidden;
+    font-size: 0;
+    height: 0;
+}
+
+.item_btm span {
+    margin-right: 0.05rem;
+    color: #999999;
+}
+
+.pic1 h3 {
+    width: 2.16rem;
+    float: left;
+}
+
+.pic1 img {
+    float: right;
+    width: 1.06rem;
+}
+
+.pic1 .item_btm {
+    float: left;
+}
+
+.pic3 img {
+    width: 1.06rem;
+    padding-right: 0.05rem;
+}
+
+.pic3 img:last-child {
+    padding-right: 0;
+}
+
+.top {
+    position: fixed;
+    top: 0;
+    width: 100%;
+}
+
+.main {
+    padding-top: 0.77rem;
+}
