@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="css/dafeiji.css" />
+    <script src="" type="text/javascript" charset="utf-8"></script>
+    <script src="js/common.js" type="text/javascript" charset="utf-8"></script>
+    <script src="js/gameEngine.js" type="text/javascript" charset="utf-8"></script>
+    <script src="js/myPlane.js" type="text/javascript" charset="utf-8"></script>
+    <script src="js/bullets.js" type="text/javascript" charset="utf-8"></script>
+    <script src="js/enemy.js" type="text/javascript" charset="utf-8"></script>
+    <script>
+        /**
+         * Class类初体验
+         * 原生js Class类简单打飞机
+         * author:liuchuzhang
+         * createDate:2017.12.10
+         */
+        window.onload = function () {
+            var oBody = document.getElementById('main_body');
+            var oList = document.getElementById('list').children;
+            for (var i = 0; i < oList.length; i++) {
+                oList[i].onclick = function () {
+                    var bullteSpeed = this.value; //子弹发射速度
+                    oBody.innerHTML = ""; //清空页面
+                    new MyPlane().init().bullteSpeed = bullteSpeed;
+                    var ge = new GameEngine().init(); //实例
+                    ge.start(); //开始游戏
+                    ge.checkplane(); //检测碰撞
+                }
+            }
+        }
+    </script>
+</head>
+
+<body>
+
+    <div id="main_body" class="main">
+        <div id="score"></div>
+        <ul id="list">
+            <li value="1000">超级困难</li>
+            <li value="500">非常困难</li>
+            <li value="250">比较困难</li>
+            <li value="80">春哥附体</li>
+        </ul>
+    </div>
+
+</body>
+
+</html>
