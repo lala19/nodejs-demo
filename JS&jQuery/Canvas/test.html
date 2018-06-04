@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #box{
+            width:600px;
+            height:600px;
+            margin:50px auto;
+            background:#ccc;
+        }
+        p{
+            width:8px;
+            height:8px;
+        }
+    </style>
+</head>
+<body>
+<div id="box">
+    <p id="dot"></p>
+</div>
+</body>
+</html>
+<script>
+    var oDot=document.getElementById('dot');
+    var oBox=document.getElementById("box");
+    var str="";
+    oBox.onmousedown=function(evt){
+        var e=evt||window.event;
+        var disX=e.offsetX;
+        var disY=e.offsetY;
+//        oDot.style.cssText="box-shadow: 8px 8px 0px red;";
+        oDot.style.cssText="box-shadow:"+disX+"px "+disY+"px 0px red";
+        document.onmousemove=function(evt){
+            var e=evt||window.event;
+            var mX=e.offsetX;
+            var mY=e.offsetY;
+            str+=mX+"px "+mY+"px 0px red,";
+            var str1=str;
+            str1=str1.replace(/,$/,"");
+            console.log(str);
+            oDot.style.cssText="box-shadow:"+str1;
+        }
+        document.onmouseup=function(evt){
+            document.onmouseup=document.onmousemove=null;
+        }
+    }
+</script>
