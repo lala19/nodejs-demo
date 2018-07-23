@@ -1,6 +1,6 @@
 var fs = require("fs");
 
-//空的小杯子
+//空的容器
 var data = '';
 //创建可读流
 var readerStream = fs.createReadStream('input.txt');
