@@ -1,2 +1,2 @@
 ## animate
-[cc](https://github.com/lala19/nodejs-demo/)
+[cc](https://github.com/liuchuzhang/nodejs-demo/)
